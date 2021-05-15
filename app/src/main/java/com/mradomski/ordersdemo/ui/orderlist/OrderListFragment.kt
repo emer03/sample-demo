@@ -27,6 +27,8 @@ class OrderListFragment : Fragment() {
         )
 
         viewModel = ViewModelProvider(this).get(OrderListViewModel::class.java)
+        binding.lifecycleOwner = this.viewLifecycleOwner
+        binding.viewModel = viewModel
 
         return binding.root
     }
