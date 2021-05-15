@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/orderListFragment">
+
+    <fragment
+        android:id="@+id/orderListFragment"
+        android:name="com.mradomski.ordersdemo.ui.orderlist.OrderListFragment"
+        tools:layout="@layout/order_list_fragment"
+        android:label="OrderListFragment" />
+</navigation>
