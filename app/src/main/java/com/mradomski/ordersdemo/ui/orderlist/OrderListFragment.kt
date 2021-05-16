@@ -23,15 +23,7 @@ class OrderListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         initialize(inflater, container)
-
-        val adapter = OrderAdapter()
-        binding.orderList.adapter = adapter
-        viewModel.orders.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.data = it
-            }
-        })
-
+        configureRecyclerView()
         return binding.root
     }
 
@@ -43,5 +35,15 @@ class OrderListFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(OrderListViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+    }
+
+    private fun configureRecyclerView() {
+        val adapter = OrderAdapter()
+        binding.orderList.adapter = adapter
+        viewModel.orders.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
     }
 }
