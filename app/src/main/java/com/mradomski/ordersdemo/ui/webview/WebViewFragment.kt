@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.mradomski.ordersdemo.R
@@ -23,8 +24,12 @@ class WebViewFragment : Fragment() {
             container,
             false
         )
-        val args = WebViewFragmentArgs.fromBundle(requireArguments())
-        binding.webView.loadUrl(args.url)
+        binding.webView.webViewClient = WebViewClient();
+
+        arguments?.get("url")?.let {
+            val args = WebViewFragmentArgs.fromBundle(requireArguments())
+            binding.webView.loadUrl(args.url)
+        }
 
         return binding.root
     }

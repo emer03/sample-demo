@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_detail"
+    app:startDestination="@id/webViewFragment2">
+    <fragment
+        android:id="@+id/webViewFragment2"
+        android:name="com.mradomski.ordersdemo.ui.webview.WebViewFragment"
+        android:label="WebViewFragment">
+        <action
+            android:id="@+id/action_webViewFragment2_self"
+            app:destination="@id/webViewFragment2" />
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+</navigation>
