@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mradomski.ordersdemo.R
 import com.mradomski.ordersdemo.databinding.OrderListFragmentBinding
+import com.mradomski.ordersdemo.repository.OrderDatabase
+import com.mradomski.ordersdemo.ui.orderlist.recyclerview.OrderAdapter
 
 class OrderListFragment : Fragment() {
 
@@ -27,10 +29,13 @@ class OrderListFragment : Fragment() {
             false
         )
 
-        viewModel = ViewModelProvider(this).get(OrderListViewModel::class.java)
+        val application = requireNotNull(this.activity).application
+        val dataSource = OrderDatabase.getInstance(application).orderDatabaseDao
+        val viewModelFactory = OrderListViewModelFactory(dataSource, application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(OrderListViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        val adapter = OrderRecyclerAdapter()
+        val adapter = OrderAdapter()
         binding.orderList.adapter = adapter
 
         viewModel.orders.observe(viewLifecycleOwner, Observer {

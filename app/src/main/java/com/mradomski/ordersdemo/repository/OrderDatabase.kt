@@ -8,12 +8,12 @@ import androidx.room.RoomDatabase
 @Database(entities = [Order::class], version = 1, exportSchema = false)
 abstract class OrderDatabase : RoomDatabase() {
 
-    abstract val orderDao: OrderDao
+    abstract val orderDatabaseDao: OrderDatabaseDao
 
     companion object {
         private const val DATABASE_NAME = "order_database"
         const val ORDER_TABLE = "order_table"
-        const val ORDER_KEY = "orderId"
+        const val ORDER_ID_COLUMN = "orderId"
         const val ORDER_TITLE_COLUMN = "title"
         const val ORDER_DESCRIPTION_COLUMN = "description"
         const val ORDER_URL_COLUMN = "url"

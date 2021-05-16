@@ -1,4 +1,4 @@
-package com.mradomski.ordersdemo.ui.orderlist
+package com.mradomski.ordersdemo.ui.orderlist.recyclerview
 
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView

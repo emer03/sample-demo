@@ -1,4 +1,4 @@
-package com.mradomski.ordersdemo.ui.orderlist
+package com.mradomski.ordersdemo.ui.orderlist.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mradomski.ordersdemo.R
 import com.mradomski.ordersdemo.repository.Order
 
-class OrderRecyclerAdapter : RecyclerView.Adapter<OrderViewHolder>() {
+class OrderAdapter : RecyclerView.Adapter<OrderViewHolder>() {
 
     var data = listOf<Order>()
         set(value) {
