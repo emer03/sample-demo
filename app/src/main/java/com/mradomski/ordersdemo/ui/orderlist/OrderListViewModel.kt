@@ -2,6 +2,8 @@ package com.mradomski.ordersdemo.ui.orderlist
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mradomski.ordersdemo.repository.OrderDatabaseDao
 import com.mradomski.ordersdemo.repository.OrderRepository
@@ -12,17 +14,25 @@ class OrderListViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
+    private val _disableRefresh = MutableLiveData<Boolean>()
+    val disableRefresh: LiveData<Boolean>
+        get() = _disableRefresh
+
     val orders = database.getAll()
 
     init {
-        fetchOrders()
+        if (orders.value?.isEmpty() != false) {
+            fetchOrders()
+        }
     }
 
-    private fun fetchOrders() {
+    fun fetchOrders() {
         viewModelScope.launch {
+            _disableRefresh.value = true
             val newOrders = OrderRepository().getAllOrders()
             database.clear()
             database.insert(newOrders)
+            _disableRefresh.value = false
         }
     }
 }

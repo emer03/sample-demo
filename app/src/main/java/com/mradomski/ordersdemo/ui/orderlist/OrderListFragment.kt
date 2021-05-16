@@ -1,12 +1,9 @@
 package com.mradomski.ordersdemo.ui.orderlist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mradomski.ordersdemo.R
 import com.mradomski.ordersdemo.databinding.OrderListFragmentBinding
@@ -24,6 +21,7 @@ class OrderListFragment : Fragment() {
     ): View {
         initialize(inflater, container)
         configureRecyclerView()
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -40,10 +38,28 @@ class OrderListFragment : Fragment() {
     private fun configureRecyclerView() {
         val adapter = OrderAdapter()
         binding.orderList.adapter = adapter
-        viewModel.orders.observe(viewLifecycleOwner, Observer {
+        viewModel.orders.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.data = it
             }
-        })
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.order_list_menu, menu)
+        val refreshItem = menu.findItem(R.id.action_refresh) ?: null
+        viewModel.disableRefresh.observe(viewLifecycleOwner) { disabled ->
+            refreshItem?.isEnabled = !disabled
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_refresh -> {
+                viewModel.fetchOrders()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
