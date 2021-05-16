@@ -5,6 +5,7 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.mradomski.ordersdemo.R
 import com.mradomski.ordersdemo.databinding.OrderListFragmentBinding
 import com.mradomski.ordersdemo.repository.OrderDatabase
@@ -21,6 +22,7 @@ class OrderListFragment : Fragment() {
     ): View {
         initialize(inflater, container)
         configureRecyclerView()
+        initializeBindings()
         setHasOptionsMenu(true)
         return binding.root
     }
@@ -41,6 +43,16 @@ class OrderListFragment : Fragment() {
         viewModel.orders.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.data = it
+            }
+        }
+    }
+
+    private fun initializeBindings() {
+        viewModel.showNetworkError.observe(viewLifecycleOwner) {
+            if (it) {
+                Snackbar.make(binding.orderList, R.string.network_error, Snackbar.LENGTH_SHORT)
+                    .show()
+                viewModel.networkErrorCompleted()
             }
         }
     }

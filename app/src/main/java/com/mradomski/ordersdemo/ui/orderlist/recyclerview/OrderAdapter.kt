@@ -37,15 +37,16 @@ class OrderAdapter : RecyclerView.Adapter<OrderViewHolder>(), OrderViewHolder.Or
     }
 
     override fun onOrderClick(view: View?, position: Int) {
-        val isTablet = view?.context?.resources?.getBoolean(R.bool.isTablet) ?: false
-        if (isTablet) {
+        val isMasterDetailView = view?.context?.resources?.getBoolean(R.bool.isTablet) ?: false
+        if (isMasterDetailView) {
             Navigation.findNavController(view?.context as Activity, R.id.nav_host_detail_fragment)
-                .navigate(
-                    WebViewFragmentDirections.actionWebViewFragment2Self(data[position].url)
-                )
+                .navigate(WebViewFragmentDirections.actionWebViewFragment2Self(data[position].url))
         } else {
             view?.findNavController()
-                ?.navigate(OrderListFragmentDirections.actionOrderListFragmentToWebViewFragment(data[position].url))
+                ?.navigate(
+                    OrderListFragmentDirections
+                        .actionOrderListFragmentToWebViewFragment(data[position].url)
+                )
         }
     }
 }

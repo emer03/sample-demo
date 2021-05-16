@@ -12,6 +12,10 @@ import com.mradomski.ordersdemo.databinding.WebViewFragmentBinding
 
 class WebViewFragment : Fragment() {
 
+    companion object {
+        private const val URL_ARG = "url"
+    }
+
     private lateinit var binding: WebViewFragmentBinding
 
     override fun onCreateView(
@@ -26,7 +30,7 @@ class WebViewFragment : Fragment() {
         )
         binding.webView.webViewClient = WebViewClient();
 
-        arguments?.get("url")?.let {
+        arguments?.get(URL_ARG)?.let {
             val args = WebViewFragmentArgs.fromBundle(requireArguments())
             binding.webView.loadUrl(args.url)
         }

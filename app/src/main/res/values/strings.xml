@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">OrdersDemo</string>
     <string name="refresh">Refresh</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="network_error">Error: Could not fetch data</string>
 </resources>

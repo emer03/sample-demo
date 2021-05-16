@@ -18,6 +18,10 @@ class OrderListViewModel(
     val disableRefresh: LiveData<Boolean>
         get() = _disableRefresh
 
+    private val _showNetworkError = MutableLiveData<Boolean>()
+    val showNetworkError: LiveData<Boolean>
+        get() = _showNetworkError
+
     val orders = database.getAll()
 
     init {
@@ -34,9 +38,13 @@ class OrderListViewModel(
                 database.clear()
                 database.insert(newOrders)
             } catch (e: Exception) {
-                //show error to user
+                _showNetworkError.value = true
             }
             _disableRefresh.value = false
         }
+    }
+
+    fun networkErrorCompleted() {
+        _showNetworkError.value = false
     }
 }
