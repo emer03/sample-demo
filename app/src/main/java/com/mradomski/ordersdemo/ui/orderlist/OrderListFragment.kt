@@ -22,22 +22,10 @@ class OrderListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.order_list_fragment,
-            container,
-            false
-        )
+        initialize(inflater, container)
 
-        val application = requireNotNull(this.activity).application
-        val dataSource = OrderDatabase.getInstance(application).orderDatabaseDao
-        val viewModelFactory = OrderListViewModelFactory(dataSource, application)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(OrderListViewModel::class.java)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
         val adapter = OrderAdapter()
         binding.orderList.adapter = adapter
-
         viewModel.orders.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.data = it
@@ -45,5 +33,15 @@ class OrderListFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    private fun initialize(inflater: LayoutInflater, container: ViewGroup?) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.order_list_fragment, container, false)
+        val application = requireNotNull(this.activity).application
+        val dataSource = OrderDatabase.getInstance(application).orderDatabaseDao
+        val viewModelFactory = OrderListViewModelFactory(dataSource, application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(OrderListViewModel::class.java)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
     }
 }

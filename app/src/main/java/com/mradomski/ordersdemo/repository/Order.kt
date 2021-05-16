@@ -27,8 +27,8 @@ fun OrderProperty.toOrder(): Order {
     return Order(
         orderId = this.orderId,
         title = this.title,
-        description = this.description.substringBeforeLast("\\t"),
-        url = this.description.substringAfterLast("\\t"),
+        description = this.description.substringBeforeLast("\t"),
+        url = this.description.substringAfterLast("\t"),
         imageUrl = this.imageUrl,
         modificationDate = this.modificationDate
     )
