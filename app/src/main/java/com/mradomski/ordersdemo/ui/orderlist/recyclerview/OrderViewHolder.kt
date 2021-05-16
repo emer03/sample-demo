@@ -1,14 +1,22 @@
 package com.mradomski.ordersdemo.ui.orderlist.recyclerview
 
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.mradomski.ordersdemo.databinding.OrderListItemViewBinding
+import com.mradomski.ordersdemo.repository.Order
 
-class OrderViewHolder(val title: TextView, private val clickListener: OrderClickListener) :
-    RecyclerView.ViewHolder(title), View.OnClickListener {
+class OrderViewHolder(
+    private val binding: OrderListItemViewBinding,
+    private val clickListener: OrderClickListener
+) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
     init {
-        title.setOnClickListener(this)
+        binding.root.setOnClickListener(this)
+    }
+
+    fun bind(item: Order) {
+        binding.order = item
+        binding.executePendingBindings()
     }
 
     override fun onClick(v: View?) {
@@ -16,6 +24,6 @@ class OrderViewHolder(val title: TextView, private val clickListener: OrderClick
     }
 
     interface OrderClickListener {
-        fun onOrderClick(view :View?, position: Int)
+        fun onOrderClick(view: View?, position: Int)
     }
 }
