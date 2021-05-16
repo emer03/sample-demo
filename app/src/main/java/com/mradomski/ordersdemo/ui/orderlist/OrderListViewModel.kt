@@ -29,9 +29,13 @@ class OrderListViewModel(
     fun fetchOrders() {
         viewModelScope.launch {
             _disableRefresh.value = true
-            val newOrders = OrderRepository().getAllOrders()
-            database.clear()
-            database.insert(newOrders)
+            try {
+                val newOrders = OrderRepository().getAllOrders()
+                database.clear()
+                database.insert(newOrders)
+            } catch (e: Exception) {
+                //show error to user
+            }
             _disableRefresh.value = false
         }
     }

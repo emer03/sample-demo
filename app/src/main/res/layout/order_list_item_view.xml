@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
             android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
             android:paddingStart="@dimen/padding_default"
             android:paddingEnd="@dimen/padding_default"
             android:text="@{order.modificationDate}"
-            android:textSize="12sp"
+            android:textSize="@dimen/default_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +44,7 @@
             android:paddingStart="@dimen/padding_default"
             android:paddingEnd="@dimen/padding_default"
             android:text="@{order.title}"
-            android:textSize="18sp"
+            android:textSize="@dimen/title_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
@@ -58,9 +58,8 @@
             android:paddingStart="@dimen/padding_default"
             android:paddingEnd="@dimen/padding_default"
             android:text="@{order.description}"
-            android:textSize="12sp"
+            android:textSize="@dimen/default_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="Some long description" />
