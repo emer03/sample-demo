@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/orderListFragment"
         android:name="com.mradomski.ordersdemo.ui.orderlist.OrderListFragment"
-        tools:layout="@layout/order_list_fragment"
-        android:label="OrderListFragment" >
+        android:label="Orders"
+        tools:layout="@layout/order_list_fragment">
         <action
             android:id="@+id/action_orderListFragment_to_webViewFragment"
             app:destination="@id/webViewFragment" />
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.mradomski.ordersdemo.ui.webview.WebViewFragment"
-        android:label="WebViewFragment" >
+        android:label="Order Details">
         <argument
             android:name="url"
             app:argType="string" />

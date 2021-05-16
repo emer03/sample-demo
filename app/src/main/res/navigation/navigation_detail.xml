@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/webViewFragment2"
         android:name="com.mradomski.ordersdemo.ui.webview.WebViewFragment"
-        android:label="WebViewFragment">
+        android:label="Order Details">
         <action
             android:id="@+id/action_webViewFragment2_self"
             app:destination="@id/webViewFragment2" />
