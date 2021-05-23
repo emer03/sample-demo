@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mradomski.ordersdemo.repository.OrderDatabaseDao
+import com.mradomski.ordersdemo.database.OrderDatabaseDao
 import com.mradomski.ordersdemo.repository.OrderRepository
 import kotlinx.coroutines.launch
 
@@ -13,6 +13,8 @@ class OrderListViewModel(
     private val database: OrderDatabaseDao,
     application: Application
 ) : AndroidViewModel(application) {
+
+    private val orderRepository = OrderRepository(database)
 
     private val _disableRefresh = MutableLiveData<Boolean>()
     val disableRefresh: LiveData<Boolean>
@@ -22,21 +24,17 @@ class OrderListViewModel(
     val showNetworkError: LiveData<Boolean>
         get() = _showNetworkError
 
-    val orders = database.getAll()
+    val orders = orderRepository.orders
 
     init {
-        if (orders.value?.isEmpty() != false) {
-            fetchOrders()
-        }
+        refreshOrders()
     }
 
-    fun fetchOrders() {
+    fun refreshOrders() {
         viewModelScope.launch {
             _disableRefresh.value = true
             try {
-                val newOrders = OrderRepository().getAllOrders()
-                database.clear()
-                database.insert(newOrders)
+                orderRepository.refreshOrders()
             } catch (e: Exception) {
                 _showNetworkError.value = true
             }

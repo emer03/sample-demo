@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.mradomski.ordersdemo.R
 import com.mradomski.ordersdemo.databinding.OrderListFragmentBinding
-import com.mradomski.ordersdemo.repository.OrderDatabase
+import com.mradomski.ordersdemo.database.OrderDatabase
 import com.mradomski.ordersdemo.ui.orderlist.recyclerview.OrderAdapter
 
 class OrderListFragment : Fragment() {
@@ -68,7 +68,7 @@ class OrderListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_refresh -> {
-                viewModel.fetchOrders()
+                viewModel.refreshOrders()
                 true
             }
             else -> super.onOptionsItemSelected(item)

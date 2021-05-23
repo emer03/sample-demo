@@ -1,12 +1,12 @@
-package com.mradomski.ordersdemo.repository
+package com.mradomski.ordersdemo.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_ID_COLUMN
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_TABLE
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_ID_COLUMN
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_TABLE
 
 @Dao
 interface OrderDatabaseDao {

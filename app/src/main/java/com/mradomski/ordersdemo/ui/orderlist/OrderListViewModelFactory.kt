@@ -3,7 +3,7 @@ package com.mradomski.ordersdemo.ui.orderlist
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mradomski.ordersdemo.repository.OrderDatabaseDao
+import com.mradomski.ordersdemo.database.OrderDatabaseDao
 
 class OrderListViewModelFactory(
     private val dataSource: OrderDatabaseDao,

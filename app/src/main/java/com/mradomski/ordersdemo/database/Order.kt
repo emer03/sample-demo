@@ -1,16 +1,16 @@
-package com.mradomski.ordersdemo.repository
+package com.mradomski.ordersdemo.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.mradomski.ordersdemo.network.OrderProperty
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_DESCRIPTION_COLUMN
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_ID_COLUMN
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_IMAGE_URL_COLUMN
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_MODIFICATION_DATE_COLUMN
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_TABLE
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_TITLE_COLUMN
-import com.mradomski.ordersdemo.repository.OrderDatabase.Companion.ORDER_URL_COLUMN
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_DESCRIPTION_COLUMN
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_ID_COLUMN
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_IMAGE_URL_COLUMN
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_MODIFICATION_DATE_COLUMN
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_TABLE
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_TITLE_COLUMN
+import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_URL_COLUMN
 
 @Entity(tableName = ORDER_TABLE)
 data class Order(

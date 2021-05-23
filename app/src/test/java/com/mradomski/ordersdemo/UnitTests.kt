@@ -1,7 +1,7 @@
 package com.mradomski.ordersdemo
 
 import com.mradomski.ordersdemo.network.OrderProperty
-import com.mradomski.ordersdemo.repository.toOrder
+import com.mradomski.ordersdemo.database.toOrder
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

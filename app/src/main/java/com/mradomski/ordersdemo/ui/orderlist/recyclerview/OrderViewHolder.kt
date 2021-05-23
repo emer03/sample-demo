@@ -3,7 +3,7 @@ package com.mradomski.ordersdemo.ui.orderlist.recyclerview
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.mradomski.ordersdemo.databinding.OrderListItemViewBinding
-import com.mradomski.ordersdemo.repository.Order
+import com.mradomski.ordersdemo.database.Order
 
 class OrderViewHolder(
     private val binding: OrderListItemViewBinding,

@@ -1,4 +1,4 @@
-package com.mradomski.ordersdemo.repository
+package com.mradomski.ordersdemo.database
 
 import android.content.Context
 import androidx.room.Database
