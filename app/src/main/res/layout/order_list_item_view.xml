@@ -7,7 +7,7 @@
 
         <variable
             name="order"
-            type="com.mradomski.ordersdemo.database.Order" />
+            type="com.mradomski.ordersdemo.domain.Order" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

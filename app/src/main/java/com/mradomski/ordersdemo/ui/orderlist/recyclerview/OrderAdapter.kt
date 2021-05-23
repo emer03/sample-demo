@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mradomski.ordersdemo.R
 import com.mradomski.ordersdemo.databinding.OrderListItemViewBinding
-import com.mradomski.ordersdemo.database.Order
+import com.mradomski.ordersdemo.domain.Order
 import com.mradomski.ordersdemo.ui.orderlist.OrderListFragmentDirections
 import com.mradomski.ordersdemo.ui.webview.WebViewFragmentDirections
 

@@ -1,7 +1,7 @@
 package com.mradomski.ordersdemo
 
 import com.mradomski.ordersdemo.network.OrderProperty
-import com.mradomski.ordersdemo.database.toOrder
+import com.mradomski.ordersdemo.network.asDatabaseModel
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -17,7 +17,7 @@ class UnitTests {
 
     @Test
     fun toOrder_CorrectConversion_True() {
-        val order = orderProperty.toOrder()
+        val order = orderProperty.asDatabaseModel()
         assertEquals("Padu", order.title)
         assertEquals("Some long description.", order.description)
         assertEquals("http://mradomski.com/", order.url)

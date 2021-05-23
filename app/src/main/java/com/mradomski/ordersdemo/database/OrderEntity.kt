@@ -3,7 +3,6 @@ package com.mradomski.ordersdemo.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mradomski.ordersdemo.network.OrderProperty
 import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_DESCRIPTION_COLUMN
 import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_ID_COLUMN
 import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_IMAGE_URL_COLUMN
@@ -11,9 +10,10 @@ import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_MODIFICAT
 import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_TABLE
 import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_TITLE_COLUMN
 import com.mradomski.ordersdemo.database.OrderDatabase.Companion.ORDER_URL_COLUMN
+import com.mradomski.ordersdemo.domain.Order
 
 @Entity(tableName = ORDER_TABLE)
-data class Order(
+data class OrderEntity(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     @ColumnInfo(name = ORDER_ID_COLUMN) var orderId: Long = 0,
     @ColumnInfo(name = ORDER_TITLE_COLUMN) val title: String = "",
@@ -23,13 +23,13 @@ data class Order(
     @ColumnInfo(name = ORDER_MODIFICATION_DATE_COLUMN) val modificationDate: String = ""
 )
 
-fun OrderProperty.toOrder(): Order {
+fun OrderEntity.asDomainModel(): Order {
     return Order(
-        orderId = this.orderId,
-        title = this.title,
-        description = this.description.substringBeforeLast("\t"),
-        url = this.description.substringAfterLast("\t"),
-        imageUrl = this.imageUrl,
-        modificationDate = this.modificationDate
+        this.orderId,
+        this.title,
+        this.description,
+        this.url,
+        this.imageUrl,
+        this.modificationDate
     )
 }
